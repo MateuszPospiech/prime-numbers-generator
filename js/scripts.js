@@ -2,11 +2,51 @@ const checkNumber = document.getElementById('checkNumber');
 const number = document.getElementById('number');
 const result = document.getElementById('result');
 
-function writeNumber() {
+let memoryPrimeNumber = '';
+
+function checkOutPrimeNumber() {
+    
+    const numberValue = number.value;
+    
+    if(numberValue >= 2){
+        memoryPrimeNumber = '2';
+    }
+    
+    for(i=1; i <= numberValue; i++){
+        
+        /*IT WORKS FOR ALL PRIME NUMBER EXCEPTT 2
+        just because Math.sqrt(2) == ~1.4 and round it to 1*/
+        for(j=2; j <= Math.round(Math.sqrt(i)); j++){
+            const pierwiastek = Math.round(Math.sqrt(i));
+            const moduloResoult = i % j;
+            
+            
+            if(moduloResoult != 0 && j>= Math.round(Math.sqrt(i)) && numberValue > i ){
+                
+                memoryPrimeNumber += `, ${i}`;
+                break;  
+            }
+            else if(moduloResoult != 0){    
+                
+                /* ---IT CAN BE PRIME NUMBER---
+                but moduloResult have to be != 0 in all case*/
+            }
+            else{
+                break; 
+                
+                /* ---IT IS NOT PRIME NUMBER---*/
+            }
+        } 
+    } 
+}
+
+function writePrimeNumber(){
+    
     const numberValue = number.value;
     
     if(numberValue>2){
-        result.innerHTML = 2;
+        result.innerHTML = `${memoryPrimeNumber}`;
+        memoryPrimeNumber = '';
     }
     else if(numberValue<=1){
         result.innerHTML = 'Liczba pierwsza to liczba NATURALNĄ większa od 1, która ma dokładnie dwa; 1 i samą siebie.';
@@ -14,49 +54,7 @@ function writeNumber() {
     else{
         result.innerHTML = '';
     }
-                      
-    
-    for(i=1; i <= numberValue; i++){
-        
-        for(j=2; j <= Math.round(Math.sqrt(i)); j++){
-            const pierwiastek = Math.round(Math.sqrt(i));
-            const wynik2 = i % j;
-            let wynikii = 0;
-            wynikii = wynikii + wynik2;
-            
-            
-              
-            /*console.log(`Liczba j ${j},  Liczba i ${i}, Pierwiastek  ${pierwiastek}, Reszta z dzielenia ${wynik2}`);*/
-            
-            
-            if(wynik2 != 0 && /*wynikii == 1 &&*/ j>= Math.round(Math.sqrt(i)) && numberValue > i ){
-                
-                console.log(`Liczba ${i} jest liczbą pierwszą. Ile obrotów ${wynikii}.`);
-                
-                
-                result.innerHTML += `, ${i}`;
-                
-                
-                break;
-                
-            }
-            else if(wynik2 != 0){
-                
-                /*console.log(`Liczba ${i} MOŻE jest LP. Ile obrotów ${wynikii}.`);*/
-            }
-            else{
-                break;
-                console.log(`Liczba ${i} nie jest liczbą pierwszą.  Ile obrotów ${wynikii}`);
-                
-                
-                
-                break;
-                
-            }
-            }
-        
-    }
-    
 }
 
-checkNumber.addEventListener('click', writeNumber);
+checkNumber.addEventListener('click', checkOutPrimeNumber);
+checkNumber.addEventListener('click', writePrimeNumber);
