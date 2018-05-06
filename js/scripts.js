@@ -49,7 +49,7 @@ function writePrimeNumber(){
         memoryPrimeNumber = '';
     }
     else if(numberValue<=1){
-        result.innerHTML = 'Liczba pierwsza to liczba NATURALNĄ większa od 1, która ma dokładnie dwa; 1 i samą siebie.';
+        result.innerHTML = 'Liczba pierwsza to liczba naturalna większa od 1, która ma dokładnie dwa dzielniki: 1 i samą siebie.';
     }
     else{
         result.innerHTML = '';
