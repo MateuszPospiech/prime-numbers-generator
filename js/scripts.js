@@ -17,7 +17,6 @@ function checkOutPrimeNumber() {
         /*IT WORKS FOR ALL PRIME NUMBER EXCEPTT 2
         just because Math.sqrt(2) == ~1.4 and round it to 1*/
         for(j=2; j <= Math.round(Math.sqrt(i)); j++){
-            const pierwiastek = Math.round(Math.sqrt(i));
             const moduloResoult = i % j;
             
             
@@ -47,6 +46,9 @@ function writePrimeNumber(){
     if(numberValue>2){
         result.innerHTML = `${memoryPrimeNumber}`;
         memoryPrimeNumber = '';
+    }
+    else if(numberValue==2){
+        result.innerHTML = '2 jest najmniejszą liczbą pierwszą';
     }
     else if(numberValue<=1){
         result.innerHTML = 'Liczba pierwsza to liczba naturalna większa od 1, która ma dokładnie dwa dzielniki: 1 i samą siebie.';
